@@ -1,0 +1,60 @@
+MainScreen.button.vizitatorButton=Vizitator
+MainScreen.button.angajatButton=Angajat
+MainScreen.button.adminButton=Admin
+MainScreen.label.titleLabel=Aplicatie Muzeu
+MainScreen.label.promptLabel=Sunt un:
+MainScreen.checkbox.checkBox1=Utilizator special
+
+ArtWorkListView.button.anButton=An
+ArtWorkListView.button.titluButton=Titlu
+ArtWorkListView.button.tipButton=Tip
+ArtWorkListView.button.artistButton=Artist
+ArtWorkListView.button.cautaButton=Cauta
+ArtWorkListView.button.vizualizareImaginiButton=Imagini
+ArtWorkListView.label.titleLabel=Bine ati venit!
+ArtWorkListView.label.labelTitleFilter=Filtru titlu:
+ArtWorkListView.label.labelYearFilter=Filtru autor:
+ArtWorkListView.label.labelAuthorFilter=Filtru an:
+ArtWorkListView.label.labelTypeFilter=Filtru tip:
+
+LogIn.button.logInButton = Conectare
+LogIn.label.usernameLabel = Utilizator:
+LogIn.label.passwordLabel = Parola:
+
+EmployeeUI.button.adaugaButton = Adauga
+EmployeeUI.button.stergeButton = Sterge
+EmployeeUI.button.actualizeazaButton = Actualizeaza
+EmployeeUI.button.cautaButton = Cauta
+EmployeeUI.button.generareCsvButton = Generare CSV
+EmployeeUI.button.generareJSONButton = Generare JSON
+EmployeeUI.button.generareXMLButton = Generare XML
+EmployeeUI.button.generareDocButton = Generare DOC
+EmployeeUI.button.graficeButton = Grafice
+EmployeeUI.button.vizitatorButton = Acceseaza ca vizitator
+EmployeeUI.label.titleLabel = Servicii Angajat
+EmployeeUI.label.labelTitlu = Titlu:
+EmployeeUI.label.labelArtist = Artist:
+EmployeeUI.label.labelYear = An:
+EmployeeUI.label.labelType = Tip:
+EmployeeUI.label.labelPath = Cale:
+
+AdminUI.button.adaugaButton = Adauga
+AdminUI.button.stergeButton = Sterge
+AdminUI.button.cautaButton = Cauta
+AdminUI.button.actualizeazaButton = Actualizeaza
+AdminUI.button.filtruOpereButton = Filtrare Lista Opere
+AdminUI.button.filtrareUsersButton = Filtrare Lista Utilizatori
+AdminUI.label.titleLabel = Servicii Admin
+AdminUI.label.UNLabel = U:
+AdminUI.label.PWLabel = P:
+AdminUI.label.UTLabel = TU:
+
+UsersFilterUI.button.button1 = Utilizator
+UsersFilterUI.button.button2 = Parola
+UsersFilterUI.button.button3 = Tip
+
+ViewImages.button.nextButton = Urmatoarea
+ViewImages.button.backButton = Precedenta
+
+
+

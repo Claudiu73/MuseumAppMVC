@@ -6,12 +6,16 @@ public class ArtWork {
     private String artist;
     private int year;
     private String type;
+    private String imagePath;
 
-    public ArtWork(String title, String artist, int year, String type) {
+
+
+    public ArtWork(String title, String artist, int year, String type, String imagePath) {
         this.title = title;
         this.artist = artist;
         this.year = year;
         this.type = type;
+        this.imagePath = imagePath;
     }
 
     public String getTitle() {
@@ -47,7 +51,14 @@ public class ArtWork {
 
     @Override
     public String toString() {
-        return artist + " - " + title + " (" + year + ", " + type + ")";
+        return artist + " - " + title + " (" + year + ", " + type + ") ";
+    }
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
 }

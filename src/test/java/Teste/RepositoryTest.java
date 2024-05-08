@@ -22,13 +22,13 @@ class RepositoryTest {
     void setUp() throws DAOException {
         repository = new ArtWorkRepository();
         userRepository = new UserRepository();
-        repository.addArtwork(new ArtWork("Mona Lisa", "Leonardo da Vinci", 1503, "Pictură"));
-        repository.addArtwork(new ArtWork("Noapte instelata", "Vincent van Gogh", 1889, "Pictură"));
+        repository.addArtwork(new ArtWork("Mona Lisa", "Leonardo da Vinci", 1503, "Pictură", " "));
+        repository.addArtwork(new ArtWork("Noapte instelata", "Vincent van Gogh", 1889, "Pictură", " "));
     }
 
     @Test
     void addArtworkAndRetrieveTest() throws DAOException {
-        ArtWork artwork = new ArtWork("Titlu", "Artist", 2020, "Pictură");
+        ArtWork artwork = new ArtWork("Titlu", "Artist", 2020, "Pictură", " ");
         repository.addArtwork(artwork);
 
         List<ArtWork> artworks = repository.getAllArtworks();
@@ -45,7 +45,7 @@ class RepositoryTest {
 
     @Test
     void deleteArtworkTest() throws DAOException {
-        ArtWork artwork = new ArtWork("TestTitleForDeletion", "TestArtist", 2000, "TestType");
+        ArtWork artwork = new ArtWork("TestTitleForDeletion", "TestArtist", 2000, "TestType", " ");
         repository.addArtwork(artwork);
 
         repository.deleteArtwork("TestTitleForDeletion");

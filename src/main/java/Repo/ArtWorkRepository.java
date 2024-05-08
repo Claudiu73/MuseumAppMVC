@@ -12,13 +12,14 @@ public class ArtWorkRepository implements IArtWork{
 
     @Override
     public void addArtwork(ArtWork artwork) throws DAOException {
-        String sql = "INSERT INTO artworks (title, artist, year, type) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO artworks (title, artist, year, type, imagePath) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionBD.getConnection();
              PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, artwork.getTitle());
             statement.setString(2, artwork.getArtist());
             statement.setInt(3, artwork.getYear());
             statement.setString(4, artwork.getType());
+            statement.setString(5, artwork.getImagePath());
             statement.executeUpdate();
             System.out.println("Opera de arta adaugata cu succes.");        }
         catch (SQLException e) {
@@ -44,7 +45,8 @@ public class ArtWorkRepository implements IArtWork{
                 String artist = resultSet.getString("artist");
                 int year = resultSet.getInt("year");
                 String type = resultSet.getString("type");
-                artwork = new ArtWork(title, artist, year, type);
+                String imagePath = resultSet.getString("imagePath");
+                artwork = new ArtWork(title, artist, year, type, imagePath);
                 artwork.setId(id);
             }
         } catch (SQLException e) {
@@ -69,7 +71,8 @@ public class ArtWorkRepository implements IArtWork{
                 String artist = resultSet.getString("artist");
                 int year = resultSet.getInt("year");
                 String type = resultSet.getString("type");
-                ArtWork artwork = new ArtWork(title, artist, year, type);
+                String imagePath = resultSet.getString("imagePath");
+                ArtWork artwork = new ArtWork(title, artist, year, type, imagePath);
                 artwork.setId(id);
                 artworks.add(artwork);
             }
@@ -82,7 +85,8 @@ public class ArtWorkRepository implements IArtWork{
 
     @Override
     public void updateArtwork(ArtWork artwork) throws DAOException {
-        String sql = "UPDATE artworks SET artist = ?, year = ?, type = ? WHERE title = ?";
+        // SQL pentru a actualiza o operă de artă folosind ID-ul dacă este disponibil, altfel folosește titlul ca fallback.
+        String sql = "UPDATE artworks SET artist = ?, year = ?, type = ?, imagePath = ? WHERE title = ?";
 
         try (Connection conn = ConnectionBD.getConnection();
              PreparedStatement statement = conn.prepareStatement(sql)) {
@@ -90,7 +94,16 @@ public class ArtWorkRepository implements IArtWork{
             statement.setString(1, artwork.getArtist());
             statement.setInt(2, artwork.getYear());
             statement.setString(3, artwork.getType());
-            statement.setString(4, artwork.getTitle());
+            statement.setString(4, artwork.getImagePath());
+            statement.setString(5, artwork.getTitle());
+
+            // Loghează fiecare valoare pentru a verifica ce se trimite către DB
+            System.out.println("Updating Artwork:");
+            System.out.println("Artist: " + artwork.getArtist());
+            System.out.println("Year: " + artwork.getYear());
+            System.out.println("Type: " + artwork.getType());
+            System.out.println("Image Path: " + artwork.getImagePath());
+            System.out.println("Title: " + artwork.getTitle());
 
             int rowsUpdated = statement.executeUpdate();
 
@@ -103,7 +116,6 @@ public class ArtWorkRepository implements IArtWork{
             throw new DAOException("Error updating artwork", e);
         }
     }
-
 
 
     @Override

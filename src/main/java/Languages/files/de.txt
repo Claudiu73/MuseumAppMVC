@@ -1,0 +1,59 @@
+MainScreen.button.vizitatorButton = Gast
+MainScreen.button.angajatButton = Mitarbeiter
+MainScreen.button.adminButton = Admin
+MainScreen.label.titleLabel = Museumsanwendung
+MainScreen.label.promptLabel = Ich bin ein:
+
+ArtWorkListView.button.anButton = Jahr
+ArtWorkListView.button.titluButton = Titel
+ArtWorkListView.button.tipButton = Typ
+ArtWorkListView.button.artistButton = Künstler
+ArtWorkListView.button.cautaButton = Suchen nach
+ArtWorkListView.button.vizualizareImaginiButton = Bilder
+ArtWorkListView.label.titleLabel = Keine Ursache!
+ArtWorkListView.label.labelTitleFilter = Titelfilter:
+ArtWorkListView.label.labelYearFilter = Autorenfilter:
+ArtWorkListView.label.labelAuthorFilter = Jahr filtern:
+ArtWorkListView.label.labelTypeFilter = Filter Typ:
+
+LogIn.button.logInButton = Anmeldung
+LogIn.label.usernameLabel = Benutzer:
+LogIn.label.passwordLabel = Passwort:
+
+EmployeeUI.button.adaugaButton = Hinzufügen
+EmployeeUI.button.stergeButton = Entfernen
+EmployeeUI.button.actualizeazaButton = Aktualisiert
+EmployeeUI.button.cautaButton = Suchen nach
+EmployeeUI.button.generareCsvButton = CSV-Generierung
+EmployeeUI.button.generareJSONButton = Generieren Sie JSON
+EmployeeUI.button.generareXMLButton = XML-Generierung
+EmployeeUI.button.generareDocButton = DOC-Generierung
+EmployeeUI.button.graficeButton = Diagramme
+EmployeeUI.button.vizitatorButton = Zugang als Besucher
+EmployeeUI.label.titleLabel = Servicemitarbeiter
+EmployeeUI.label.labelTitlu = Titel:
+EmployeeUI.label.labelArtist = Künstler:
+EmployeeUI.label.labelYear = Jahr:
+EmployeeUI.label.labelType = Typ:
+EmployeeUI.label.labelPath = Weg:
+
+AdminUI.button.adaugaButton = Hinzufügen
+AdminUI.button.stergeButton = Entfernen
+AdminUI.button.cautaButton = Suchen nach
+AdminUI.button.actualizeazaButton = Aktualisiert
+AdminUI.button.filtruOpereButton = Liste der Werke filtern
+AdminUI.button.filtrareUsersButton = Filtern der Benutzerliste
+AdminUI.label.titleLabel = Administratordienste
+AdminUI.label.UNLabel = N:
+AdminUI.label.PWLabel = P:
+AdminUI.label.UTLabel = BT:
+
+UsersFilterUI.button.button1 = Benutzer
+UsersFilterUI.button.button2 = Passwort
+UsersFilterUI.button.button3 = Typ
+
+ViewImages.button.nextButton = Folgende
+ViewImages.button.backButton = Vorrang
+
+
+

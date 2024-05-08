@@ -1,12 +1,14 @@
 package View;
 
-import ViewModel.UsersFilterViewModel;
+import Controller.UsersFilterController;
+import Languages.LanguageObservable;
+import Languages.Observer;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-public class UsersFilterUI extends JFrame {
+public class UsersFilterUI extends JFrame implements Observer{
     private JList<String> list1;
     private JTextField textField1;
     private JTextField textField2;
@@ -14,11 +16,14 @@ public class UsersFilterUI extends JFrame {
     private JButton button1;
     private JButton button2;
     private JButton button3;
-    private UsersFilterViewModel usersFilterViewModel;
+    private JComboBox comboBox1;
+    private UsersFilterController usersFilterController;
     private DefaultListModel<String> listModel;
+    private LanguageObservable languageObservable;
 
     public UsersFilterUI() {
-        usersFilterViewModel = new UsersFilterViewModel();
+        this.languageObservable = new LanguageObservable();
+        usersFilterController = new UsersFilterController();
         listModel = new DefaultListModel<>();
         initializeUI();
         performLisToBeFiltered();
@@ -33,7 +38,7 @@ public class UsersFilterUI extends JFrame {
 
         list1 = new JList<>(listModel);
         JScrollPane scrollPane = new JScrollPane(list1);
-        usersFilterViewModel.setListModelUser(listModel);
+        usersFilterController.setListModelUser(listModel);
         this.add(scrollPane, BorderLayout.CENTER);
         textField1 = new JTextField();
         textField2 = new JTextField();
@@ -50,50 +55,75 @@ public class UsersFilterUI extends JFrame {
         panel.add(textField1);
         panel.add(button1);
         button1.addActionListener(e -> {
-            usersFilterViewModel.setUsername(textField1.getText());
+            usersFilterController.setUsername(textField1.getText());
             performToFilterUsernameForAdmin();});
         panel.add(textField2);
         panel.add(button2);
         button2.addActionListener(e -> {
-                    usersFilterViewModel.setPassword(textField2.getText());
+                    usersFilterController.setPassword(textField2.getText());
             performToFilterPasswordForAdmin();});
         panel.add(textField3);
         panel.add(button3);
         button3.addActionListener(e -> {
-            usersFilterViewModel.setUserType(textField3.getText());
+            usersFilterController.setUserType(textField3.getText());
             performToFilterUserTypeForAdmin();});
+
+        setupComboBox(panel);
+        panel.add(comboBox1);
 
         this.add(panel, BorderLayout.SOUTH);
         this.pack();
         this.setLocationRelativeTo(null);
     }
 
+    private void setupComboBox(JPanel panel) {
+        comboBox1 = new JComboBox<>(new String[]{"RO", "EN", "FR", "DE"});
+        comboBox1.setBounds(425, 400, 50, 30);
+        comboBox1.setSelectedIndex(0);
+        comboBox1.addActionListener(e -> {
+            notifyLanguageChange();
+        });
+        panel.add(comboBox1);
+        notifyLanguageChange();  // Asigură că limbajul inițial este setat corect după ce comboBox-ul a fost adăugat la panel
+    }
+
     private void performLisToBeFiltered()
     {
-        usersFilterViewModel.ListUsersToBeFiltered();
+        usersFilterController.ListUsersToBeFiltered();
     }
 
     private void performToFilterUsernameForAdmin()
     {
-        usersFilterViewModel.setUsername(textField1.getText());
-        usersFilterViewModel.ToFilterUsernameForAdmin();
-        list1.setModel(usersFilterViewModel.getListModelUser());
+        usersFilterController.setUsername(textField1.getText());
+        usersFilterController.ToFilterUsernameForAdmin();
+        list1.setModel(usersFilterController.getListModelUser());
     }
 
     private void performToFilterPasswordForAdmin()
     {
-        usersFilterViewModel.setPassword(textField2.getText());
-        usersFilterViewModel.ToFilterPasswordForAdmin();
-        list1.setModel(usersFilterViewModel.getListModelUser());
+        usersFilterController.setPassword(textField2.getText());
+        usersFilterController.ToFilterPasswordForAdmin();
+        list1.setModel(usersFilterController.getListModelUser());
     }
 
     private void performToFilterUserTypeForAdmin()
     {
-        usersFilterViewModel.setUserType(textField3.getText());
-        usersFilterViewModel.ToFilterUserTypeForAdmin();
-        list1.setModel(usersFilterViewModel.getListModelUser());
+        usersFilterController.setUserType(textField3.getText());
+        usersFilterController.ToFilterUserTypeForAdmin();
+        list1.setModel(usersFilterController.getListModelUser());
 
     }
 
+    private void notifyLanguageChange() {
+        String selectedLanguage = (String) comboBox1.getSelectedItem();
+        languageObservable.setLanguage(selectedLanguage);
+        updateLanguage();
+    }
 
+    @Override
+    public void updateLanguage() {
+        button1.setText(languageObservable.getLanguageText("UsersFilterUI.button.button1"));
+        button2.setText(languageObservable.getLanguageText("UsersFilterUI.button.button2"));
+        button3.setText(languageObservable.getLanguageText("UsersFilterUI.button.button3"));
+    }
 }

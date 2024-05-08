@@ -1,25 +1,29 @@
 package View;
 
-import ViewModel.AdminViewModel;
+import Controller.AdminController;
+import Languages.LanguageObservable;
+import Languages.Observer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class AdminUI extends JFrame{
+public class AdminUI extends JFrame implements Observer {
     private JList<String> list1;
     private JList<String> list2;
     private JTextField textField1, textField2, textField3;
     private JButton adaugaButton, stergeButton, cautaButton, actualizeazaButton, filtruOpereButton;
     private JButton filtrareUsersButton;
+    private JComboBox comboBox1;
     private DefaultListModel<String> listModel, listModel1;
-    private AdminViewModel adminViewModel;
+    private AdminController adminController;
     private JFrame frame;
     private JPanel panel;
+    private JLabel titleLabel, UNLabel, PWLabel, UTLabel;
+    private LanguageObservable languageObservable;
 
     public AdminUI() {
-        adminViewModel = new AdminViewModel();
+        this.languageObservable = new LanguageObservable();
+        adminController = new AdminController();
         listModel = new DefaultListModel<>();
         listModel1 = new DefaultListModel<>();
         frame = new JFrame("Interfață Admin");
@@ -27,8 +31,8 @@ public class AdminUI extends JFrame{
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
         createAndShowUI();
-        adminViewModel.setListModelArt(listModel);
-        adminViewModel.setListModelUser(listModel1);
+        adminController.setListModelArt(listModel);
+        adminController.setListModelUser(listModel1);
         performListArtWorks();
         performListUsers();
     }
@@ -44,30 +48,33 @@ public class AdminUI extends JFrame{
         };
         panel.setLayout(null);
 
-        JLabel titleLabel = new JLabel("Servicii Admin", SwingConstants.CENTER);
+        titleLabel = new JLabel("Servicii Admin", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
         titleLabel.setForeground(Color.BLACK);
         titleLabel.setBounds(150, 10, 500, 30);
         panel.add(titleLabel);
 
-        JLabel UNLabel = new JLabel("UN: ", SwingConstants.HORIZONTAL);
+        UNLabel = new JLabel("UN: ", SwingConstants.HORIZONTAL);
         UNLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         UNLabel.setForeground(Color.BLACK);
         UNLabel.setBounds(65,135, 500, 30);
         panel.add(UNLabel);
 
-        JLabel PWLabel = new JLabel("PW: ", SwingConstants.HORIZONTAL);
+        PWLabel = new JLabel("PW: ", SwingConstants.HORIZONTAL);
         PWLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         PWLabel.setForeground(Color.BLACK);
         PWLabel.setBounds(65,170, 500, 30);
         panel.add(PWLabel);
 
-        JLabel UTLabel = new JLabel("UT: ", SwingConstants.HORIZONTAL);
+        UTLabel = new JLabel("UT: ", SwingConstants.HORIZONTAL);
         UTLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         UTLabel.setForeground(Color.BLACK);
         UTLabel.setBounds(65,205, 500, 30);
         panel.add(UTLabel);
 
+        panel.add(comboBox1);
+
+        setupComboBox(panel);
         initializeUI();
         frame.setContentPane(panel);
         frame.setVisible(true);
@@ -130,22 +137,39 @@ public class AdminUI extends JFrame{
         addEventHandlers();
     }
 
+    private void setupComboBox(JPanel panel) {
+        comboBox1 = new JComboBox<>(new String[]{"RO", "EN", "FR", "DE"});
+        comboBox1.setBounds(725, 500, 50, 30);
+        comboBox1.setSelectedIndex(0);
+        comboBox1.addActionListener(e -> {
+            notifyLanguageChange();
+        });
+        panel.add(comboBox1);
+        notifyLanguageChange();  // Asigură că limbajul inițial este setat corect după ce comboBox-ul a fost adăugat la panel
+    }
+
+    private void notifyLanguageChange() {
+        String selectedLanguage = (String) comboBox1.getSelectedItem();
+        languageObservable.setLanguage(selectedLanguage);
+        updateLanguage(); // Asigură-te că updateLanguage este apelat când schimbi limba
+    }
+
 
     private void addEventHandlers() {
         adaugaButton.addActionListener(e -> {
             performAddUser();
         });
         stergeButton.addActionListener(e -> {
-            adminViewModel.setUsername(textField1.getText());
+            adminController.setUsername(textField1.getText());
             performDeleteUser();
         });
         cautaButton.addActionListener(e -> {
-            adminViewModel.setUsername(textField1.getText());
+            adminController.setUsername(textField1.getText());
             performSearchUser();});
         actualizeazaButton.addActionListener(e -> {
-            adminViewModel.setUsername(textField1.getText());
-            adminViewModel.setPassword(textField2.getText());
-            adminViewModel.setUserType(textField3.getText());
+            adminController.setUsername(textField1.getText());
+            adminController.setPassword(textField2.getText());
+            adminController.setUserType(textField3.getText());
             performUpdateUser();});
         filtruOpereButton.addActionListener(e -> performOpenToFilterListOfArtWorks());
         filtrareUsersButton.addActionListener(e -> performOpenToFilterUsers());
@@ -154,45 +178,59 @@ public class AdminUI extends JFrame{
 
     private void performAddUser()
     {
-        adminViewModel.setUsername(textField1.getText().trim());
-        adminViewModel.setPassword(textField2.getText().trim());
-        adminViewModel.setUserType(textField3.getText().trim());
-        adminViewModel.AddUser();
+        adminController.setUsername(textField1.getText().trim());
+        adminController.setPassword(textField2.getText().trim());
+        adminController.setUserType(textField3.getText().trim());
+        adminController.AddUser();
     }
 
     private void performDeleteUser()
     {
-        adminViewModel.getUsername();
-        adminViewModel.DeleteUser();
+        adminController.getUsername();
+        adminController.DeleteUser();
     }
 
     private void performSearchUser()
     {
-        adminViewModel.SearchUser();
+        adminController.SearchUser();
     }
 
     private void performUpdateUser()
     {
-        adminViewModel.UpdateUser();
+        adminController.UpdateUser();
     }
 
     private void performListArtWorks()
     {
-        adminViewModel.ListArtWorks();
+        adminController.ListArtWorks();
     }
 
     private void performListUsers()
     {
-        adminViewModel.ListUsers();
+        adminController.ListUsers();
     }
 
     private void performOpenToFilterUsers()
     {
-        adminViewModel.OpenToFilterUsers();
+        adminController.OpenToFilterUsers();
     }
     private void performOpenToFilterListOfArtWorks()
     {
-        adminViewModel.OpenToFilterListOfArtWorks();
+        adminController.OpenToFilterListOfArtWorks();
+    }
+
+    @Override
+    public void updateLanguage() {
+        adaugaButton.setText(languageObservable.getLanguageText("AdminUI.button.adaugaButton"));
+        stergeButton.setText(languageObservable.getLanguageText("AdminUI.button.stergeButton"));
+        cautaButton.setText(languageObservable.getLanguageText("AdminUI.button.cautaButton"));
+        actualizeazaButton.setText((languageObservable.getLanguageText("AdminUI.button.actualizeazaButton")));
+        filtruOpereButton.setText(languageObservable.getLanguageText("AdminUI.button.filtruOpereButton"));
+        filtrareUsersButton.setText(languageObservable.getLanguageText("AdminUI.button.filtrareUsersButton"));
+        titleLabel.setText(languageObservable.getLanguageText("AdminUI.label.titleLabel"));
+        UNLabel.setText(languageObservable.getLanguageText("AdminUI.label.UNLabel"));
+        PWLabel.setText(languageObservable.getLanguageText("AdminUI.label.PWLabel"));
+        UTLabel.setText(languageObservable.getLanguageText("AdminUI.label.UTLabel"));
     }
 
 }

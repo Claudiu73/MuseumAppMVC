@@ -1,0 +1,59 @@
+MainScreen.button.vizitatorButton = Visitor
+MainScreen.button.angajatButton = Employee
+MainScreen.button.adminButton = Admin
+MainScreen.label.titleLabel = Museum App
+MainScreen.label.promptLabel = I am a:
+
+ArtWorkListView.button.anButton = Year
+ArtWorkListView.button.titluButton = Title
+ArtWorkListView.button.tipButton = Type
+ArtWorkListView.button.artistButton = Artist
+ArtWorkListView.button.cautaButton = Search
+ArtWorkListView.button.vizualizareImaginiButton = Images
+ArtWorkListView.label.titleLabel = Welcome!
+ArtWorkListView.label.labelTitleFilter = Filter title:
+ArtWorkListView.label.labelYearFilter = Filter author:
+ArtWorkListView.label.labelAuthorFilter = Filter year:
+ArtWorkListView.label.labelTypeFilter = Filter type:
+
+LogIn.button.logInButton = Log In
+LogIn.label.usernameLabel = Username:
+LogIn.label.passwordLabel = Password:
+
+EmployeeUI.button.adaugaButton = Add
+EmployeeUI.button.stergeButton = Delete
+EmployeeUI.button.actualizeazaButton = Update
+EmployeeUI.button.cautaButton = Search
+EmployeeUI.button.generareCsvButton = Generating CSV
+EmployeeUI.button.generareJSONButton = Generating JSON
+EmployeeUI.button.generareXMLButton = Generating XML
+EmployeeUI.button.generareDocButton = Generating DOC
+EmployeeUI.button.graficeButton = Graphics
+EmployeeUI.button.vizitatorButton = Access as a visitor
+EmployeeUI.label.titleLabel = Services Employee
+EmployeeUI.label.labelTitlu = Title:
+EmployeeUI.label.labelArtist = Artist:
+EmployeeUI.label.labelYear = Year:
+EmployeeUI.label.labelType = Type:
+EmployeeUI.label.labelPath = Path:
+
+AdminUI.button.adaugaButton = Add
+AdminUI.button.stergeButton = Delete
+AdminUI.button.cautaButton = Search
+AdminUI.button.actualizeazaButton = Update
+AdminUI.button.filtruOpereButton = Filtering List of Artworks
+AdminUI.button.filtrareUsersButton = Filtering List of Users
+AdminUI.label.titleLabel = Services Admin
+AdminUI.label.UNLabel = UN:
+AdminUI.label.PWLabel = PW:
+AdminUI.label.UTLabel = UT:
+
+UsersFilterUI.button.button1 = Username
+UsersFilterUI.button.button2 = Password
+UsersFilterUI.button.button3 = Type
+
+ViewImages.button.nextButton = Next Photo
+ViewImages.button.backButton = Previous Photo
+
+
+

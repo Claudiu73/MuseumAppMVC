@@ -1,0 +1,59 @@
+MainScreen.button.vizitatorButton = Visiteur
+MainScreen.button.angajatButton = Employé
+MainScreen.button.adminButton = Administrateur
+MainScreen.label.titleLabel = L'application Musée
+MainScreen.label.promptLabel = Je suis un:
+
+ArtWorkListView.button.anButton = Année
+ArtWorkListView.button.titluButton = Titre
+ArtWorkListView.button.tipButton = Taper
+ArtWorkListView.button.artistButton = Artiste
+ArtWorkListView.button.cautaButton = Rechercher
+ArtWorkListView.button.vizualizareImaginiButton = Images
+ArtWorkListView.label.titleLabel = Bienvenu!
+ArtWorkListView.label.labelTitleFilter = Titre du filtre:
+ArtWorkListView.label.labelYearFilter = Auteur du filtre:
+ArtWorkListView.label.labelAuthorFilter = Année de filtre:
+ArtWorkListView.label.labelTypeFilter = Type de filtre:
+
+LogIn.button.logInButton = Se connecter
+LogIn.label.usernameLabel = Nom d'utilisateur:
+LogIn.label.passwordLabel = Mot de passe:
+
+EmployeeUI.button.adaugaButton = Ajouter
+EmployeeUI.button.stergeButton = Supprimer
+EmployeeUI.button.actualizeazaButton = Mise à jour
+EmployeeUI.button.cautaButton = Recherche
+EmployeeUI.button.generareCsvButton = Générer du CSV
+EmployeeUI.button.generareJSONButton = Générer du JSON
+EmployeeUI.button.generareXMLButton = Générer du XML
+EmployeeUI.button.generareDocButton = Générer du DOC
+EmployeeUI.button.graficeButton = Graphique
+EmployeeUI.button.vizitatorButton = Accès en tant que visiteur
+EmployeeUI.label.titleLabel = Employé des services
+EmployeeUI.label.labelTitlu = Titre:
+EmployeeUI.label.labelArtist = Artiste:
+EmployeeUI.label.labelYear = Année:
+EmployeeUI.label.labelType = Taper:
+EmployeeUI.label.labelPath = Chemin:
+
+AdminUI.button.adaugaButton = Ajouter
+AdminUI.button.stergeButton = Supprimer
+AdminUI.button.cautaButton = Recherche
+AdminUI.button.actualizeazaButton = Mise à jour
+AdminUI.button.filtruOpereButton = Filtrage de la liste des œuvres
+AdminUI.button.filtrareUsersButton = Filtrage de la liste des utilisateurs
+AdminUI.label.titleLabel = Administrateur des services
+AdminUI.label.UNLabel = NU:
+AdminUI.label.PWLabel = MP:
+AdminUI.label.UTLabel = TU:
+
+UsersFilterUI.button.button1 = Nom d'utilisateur
+UsersFilterUI.button.button2 = Mot de passe
+UsersFilterUI.button.button3 = Taper
+
+ViewImages.button.nextButton = Suivant
+ViewImages.button.backButton = Dos
+
+
+
